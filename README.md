@@ -69,3 +69,9 @@ Go to http://localhost:8000/api/doc/ for the api listing
 Postman
 ===
 Collection file > postman_collection.json
+
+Technology Used
+===
+* Python
+* Django Rest Framework
+* Sqlite3
