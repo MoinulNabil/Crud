@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "67527e8c-a1e9-43e1-ad0a-875c576f0927",
+		"name": "Basic Crud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14629600"
+	},
+	"item": [
+		{
+			"name": "items/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Gaming Keyboard\",\r\n    \"price\": 2999,\r\n    \"stock\": 200,\r\n    \"thumbnail\": \"https://example.com/images/gaming-mouse.jpg\",\r\n    \"description\": \"Mechanical Gaming Keyboard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/items/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						""
+					]
+				},
+				"description": "## Add Item Endpoint\n\nThis endpoint allows users to add a new item to the inventory. It accepts a POST request with the item details provided in the request body.\n\n### Request Format\n\nThe request body must be in JSON format and should include the following parameters:\n\n- **title** (string): The name of the item being added.\n    \n- **price** (number): The price of the item in the smallest currency unit (e.g., cents).\n    \n- **stock** (number): The quantity of the item available in stock.\n    \n- **thumbnail** (string): A URL pointing to an image of the item.\n    \n- **description** (string): A brief description of the item.\n    \n\n### Example Request Body\n\n``` json\n{\n  \"id\": 1,\n  \"title\": \"Gaming Keyboard\",\n  \"price\": 2999,\n  \"stock\": 200,\n  \"thumbnail\": \"https://example.com/images/gaming-keyboard.jpg\",\n  \"description\": \"Mechanical Gaming Keyboard\"\n}\n\n ```\n\n### Response Structure\n\nUpon a successful request, the server will respond with a confirmation message and the details of the newly created item. The response will typically include:\n\n- **id** (string): A unique identifier for the newly created item.\n    \n- **title** (string): The name of the item.\n    \n- **price** (number): The price of the item.\n    \n- **stock** (number): The available stock for the item.\n    \n- **thumbnail** (string): The URL of the item's thumbnail image.\n    \n- **description** (string): The description of the item.\n    \n- **created_at** (timestamp): The created time default current_timestamp\n    \n- **updated_at** (timestamp): The created time default current_timestamp\n    \n\nThis endpoint is crucial for maintaining the inventory by allowing users to add new products efficiently."
+			},
+			"response": []
+		},
+		{
+			"name": "items/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/items/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						""
+					]
+				},
+				"description": "### Endpoint: `GET /items/`\n\nThis endpoint retrieves a list of items from the server. It is commonly used to fetch all available items in the system.\n\n#### Request Format\n\n- **Method**: GET\n    \n- **URL**: `http://localhost:8000/items/`\n    \n- **Request Body**: No request body is required for this GET request.\n    \n\n#### Response Structure\n\nThe response will be in JSON format and will include an array of item objects. Each item object typically contains the following fields:\n\n- `id`: Unique identifier for the item.\n    \n- title: The name of the item.\n    \n- `price`: The price of the item.\n    \n- `stock`: The number of available items\n    \n- `thumbnail`: An url pointing to an image (Optional)\n    \n- `description`: A brief description of the item.\n    \n- `created_at` (timestamp): The created time default current_timestamp\n    \n- `updated_at` (timestamp): The created time default current_timestamp\n    \n\n#### Example Response\n\n``` json\n[\n    {\n        \"id\": 1,\n        \"title\": \"Hight Quality Wireless Bluetooth Headphones\",\n        \"price\": 4999,\n        \"stock\": 120,\n        \"thumbnail\": \"https://example.com/images/headphones.jpg\",\n        \"description\": \"High-quality over-ear headphones with noise cancellation and 20-hour battery life.\",\n        \"created_at\": \"2025-06-15T07:41:58.204357Z\",\n        \"updated_at\": \"2025-06-15T06:23:54.380752Z\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Ergonomic Office Chair\",\n        \"price\": 14999,\n        \"stock\": 45,\n        \"thumbnail\": \"https://example.com/images/office-chair.jpg\",\n        \"description\": \"Comfortable and adjustable chair with lumbar support, ideal for long working hours.\",\n        \"created_at\": \"2025-06-15T06:25:06.395263Z\",\n        \"updated_at\": \"2025-06-15T06:25:06.395318Z\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Gaming Mouse\",\n        \"price\": 2999,\n        \"stock\": 200,\n        \"thumbnail\": \"https://example.com/images/gaming-mouse.jpg\",\n        \"description\": \"RGB wired gaming mouse with customizable buttons and DPI settings.\",\n        \"created_at\": \"2025-06-15T06:25:34.557353Z\",\n        \"updated_at\": \"2025-06-15T06:25:34.557397Z\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Gaming Keyboard\",\n        \"price\": 2999,\n        \"stock\": 200,\n        \"thumbnail\": \"https://example.com/images/gaming-mouse.jpg\",\n        \"description\": \"Mechanical Gaming Keyboard\",\n        \"created_at\": \"2025-06-15T06:37:14.116425Z\",\n        \"updated_at\": \"2025-06-15T06:37:14.116468Z\"\n    }\n]\n\n ```\n\nThis endpoint is useful for clients that need to display a list of items or perform operations based on the available items in the system."
+			},
+			"response": []
+		},
+		{
+			"name": "items/id/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Hight Quality Wireless Bluetooth Headphones\",\r\n    \"price\": 4999,\r\n    \"stock\": 120,\r\n    \"thumbnail\": \"https://example.com/images/headphones.jpg\",\r\n    \"description\": \"High-quality over-ear headphones with noise cancellation and 20-hour battery life.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/items/1/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"1",
+						""
+					]
+				},
+				"description": "### Get Item Details\n\nThis endpoint retrieves detailed information about a specific item identified by its unique ID.\n\n#### Request\n\n- **Method**: GET\n    \n- **Endpoint**: `/items/{id}/`\n    \n- **Path Parameter**:\n    \n    - `id` (integer): The unique identifier of the item you wish to retrieve.\n        \n\n#### Expected Request Body Format\n\nThis endpoint does not require a request body as it is a GET request. The item ID is passed as a path parameter in the URL.\n\n#### Response Structure\n\nOn a successful request, the response will contain a JSON object with the following structure:\n\n- `id` (integer): The unique identifier of the item.\n    \n- `title` (string): The title of the item.\n    \n- `price` (integer): The price of the item in the smallest currency unit (e.g., cents).\n    \n- `stock` (integer): The available stock quantity of the item.\n    \n- `thumbnail` (string): A URL pointing to the item's thumbnail image.\n    \n- `description` (string): A brief description of the item.\n    \n- `created_at` (timestamp): The created time default current_timestamp\n    \n- `updated_at` (timestamp): The created time default current_timestamp\n    \n\n#### Example Response\n\n``` json\n{\n    \"id\": 1,\n    \"title\": \"Hight Quality Wireless Bluetooth Headphones\",\n    \"price\": 4999,\n    \"stock\": 120,\n    \"thumbnail\": \"https://example.com/images/headphones.jpg\",\n    \"description\": \"High-quality over-ear headphones with noise cancellation and 20-hour battery life.\",\n    \"created_at\": \"2025-06-15T07:41:58.204357Z\",\n    \"updated_at\": \"2025-06-15T06:23:54.380752Z\"\n}\n\n ```\n\nThis endpoint is useful for clients that need to display detailed information about a specific item in their application."
+			},
+			"response": []
+		},
+		{
+			"name": "items/id/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Hight Quality Wireless Bluetooth Headphones\",\r\n    \"price\": 4999,\r\n    \"stock\": 120,\r\n    \"thumbnail\": \"https://example.com/images/headphones.jpg\",\r\n    \"description\": \"High-quality over-ear headphones with noise cancellation and 20-hour battery life.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/items/1/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"1",
+						""
+					]
+				},
+				"description": "### Update Item\n\nThis endpoint allows you to update the details of an existing item in the inventory. The item is identified by its unique `id`, which is included in the URL path.\n\n#### Request\n\n- **Method**: PUT\n    \n- **URL**: `http://localhost:8000/items/{id}/`\n    \n- **Path Parameter**:\n    \n    - `id` (integer): The unique identifier of the item you want to update.\n        \n- **Request Body**: The request body must be in JSON format and should contain the following parameters:\n    \n    - `id` (integer): The unique identifier of the item (should match the `id` in the URL).\n        \n    - `title` (string): The title or name of the item.\n        \n    - `price` (integer): The price of the item in the smallest currency unit (e.g., cents).\n        \n    - `stock` (integer): The available stock quantity of the item.\n        \n    - `thumbnail` (string): A URL pointing to the thumbnail image of the item.\n        \n    - `description` (string): A detailed description of the item.\n        \n\n#### Response\n\nUpon a successful update, the response will typically return a status code of `200 OK` along with the updated item details in JSON format. The structure of the response will include the same fields as the request body, confirming the updated values.\n\nExample of a successful response:\n\n``` json\n{\n  \"id\": 1,\n  \"title\": \"Updated Item Title\",\n  \"price\": 4999,\n  \"stock\": 120,\n  \"thumbnail\": \"https://example.com/images/updated_thumbnail.jpg\",\n  \"description\": \"Updated item description.\"\n}\n\n ```\n\nEnsure that all required fields are provided in the request body to avoid validation errors."
+			},
+			"response": []
+		},
+		{
+			"name": "items/id/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Hight Quality Wireless Bluetooth Headphones\",\r\n    \"price\": 4999,\r\n    \"stock\": 120,\r\n    \"thumbnail\": \"https://example.com/images/headphones.jpg\",\r\n    \"description\": \"High-quality over-ear headphones with noise cancellation and 20-hour battery life.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/items/4/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"4",
+						""
+					]
+				},
+				"description": "## Delete Item\n\nThis endpoint allows you to delete an item from the inventory by specifying its unique identifier.\n\n### Request\n\n- **Method**: `DELETE`\n    \n- **Endpoint**: `/items/{id}/`\n    \n\n### Parameters\n\n- **Path Parameter**:\n    \n    - `id` (integer): The unique identifier of the item to be deleted. In this example, the item with `id` 4 is targeted for deletion.\n        \n\n### Request Body\n\nThe request body should be in JSON format and includes the following fields:\n\n- `id` (integer): The unique identifier of the item to delete.\n    \n- `title` (string): The title of the item.\n    \n- `price` (integer): The price of the item.\n    \n- `stock` (integer): The available stock quantity of the item.\n    \n- `thumbnail` (string): A URL to the item's thumbnail image.\n    \n- `description` (string): A brief description of the item.\n    \n\n### Expected Response\n\nUpon successful deletion, the server will respond with a status code indicating the operation's success. The response may not include a body but typically confirms that the item has been removed from the inventory.\n\nMake sure to handle any potential errors, such as attempting to delete an item that does not exist."
+			},
+			"response": []
+		}
+	]
+}
