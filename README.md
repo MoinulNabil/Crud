@@ -56,10 +56,7 @@ DELETE /items/{id} # Delete a specific item
 Full Path
 ```bash
 localhost:8000/items/
-localhost:8000/items/
 localhost:8000/items/{id}
-localhost:8000/items/{id}
-localhost/items/{id}
 ```
 
 Api Doc
