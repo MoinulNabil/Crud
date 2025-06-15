@@ -2,6 +2,9 @@ Product Crud
 ===
 You must have latest/reliable version of python installed on your machine
 
+You can follow this [Video](https://drive.google.com/file/d/1cJT1GLP_INRahFL63fy2BnvMkbmagSrL/view?usp=sharing)
+or Setup steps below to run the project
+
 Setup
 ===
 1. Clone the repo
